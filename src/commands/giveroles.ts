@@ -20,7 +20,6 @@ export default class GiveRolesCommand implements IBotCommand {
             answer.hasResponse = false;
             answer.message.channel.send(`Fetching all members`);
             const allMembers = await this._bot.guild.members.fetch();
-            answer.message.channel.send(`test message`);
             answer.message.channel.send(`Fetched all members`);
             //for (const mem of allMembers) {
             //    answer.message.channel.send(`${mem}`);
