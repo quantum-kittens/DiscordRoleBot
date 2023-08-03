@@ -20,13 +20,20 @@ export default class GiveRolesCommand implements IBotCommand {
             answer.hasResponse = false;
             answer.message.channel.send(`Fetching all members`);
             const allMembers = await this._bot.guild.members.fetch();
+            answer.message.channel.send(`test message`);
             answer.message.channel.send(`Fetched all members`);
+            //for (const mem of allMembers) {
+            //    answer.message.channel.send(`${mem}`);
+            //}
+            answer.message.channel.send(`Role to assign:`);
+            answer.message.channel.send(this._bot.role.id);
             const members = allMembers
-                .filter((m) => this._bot.userTags.has(m.user.tag))
-                .filter((m) => !m.roles.cache.has(this._bot.role.id))
+                //.filter((m) => this._bot.userTags.has(m.user.tag))
+                //.filter((m) => !m.roles.cache.has(this._bot.role.id))
                 .array();
             answer.message.channel.send(`Assigning role to ${members.length} members`);
             const addRole = (member) => {
+                answer.message.channel.send(member); 
                 return member.roles.add(this._bot.role);
             };
             members.reduce((previousPromise, nextMember) => {
